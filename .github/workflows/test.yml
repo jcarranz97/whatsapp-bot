@@ -17,9 +17,6 @@ jobs:
       - name: Install uv
         run: pip install uv
 
-      - name: Install dependencies
-        run: ruff install
-
       - name: Ruff Check
         run: uv run ruff check .
 
