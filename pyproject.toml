@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi[standard]>=0.115.6",
+    "requests>=2.32.3",
 ]
 
 [dependency-groups]
@@ -61,6 +62,8 @@ ignore = [
   "CPY",  # flake8-copyright (CPY)
   "COM812",  # missing-trailing-comma (COM812)
   "EXE",  # flake8-executable (EXE)
+  "ASYNC",  # flake8-async (ASYNC)
+  "ISC001",  # single-line-implicit-string-concatenation (ISC001)
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
