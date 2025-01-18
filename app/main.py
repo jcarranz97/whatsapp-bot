@@ -140,6 +140,12 @@ async def verify_webhook(
 ) -> str:
     """Verify that the webhook is working.
 
+    The webhook must be verified by the Facebook Messenger Platform, this
+    function will return the challenge string if the verification is successful.
+
+    For more information, see:
+      - https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests
+
     Raises:
         HTTPException: If the webhook is not verified.
 
