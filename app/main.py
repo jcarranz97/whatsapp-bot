@@ -12,6 +12,7 @@ from fastapi import (
     HTTPException,
     Query,
 )
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 
 # Load the environment variables
@@ -131,7 +132,7 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
     return {"status": "success"}
 
 
-@app.get("/webhook")
+@app.get("/webhook", response_class=PlainTextResponse)
 async def verify_webhook(
     mode: Annotated[str, Query(..., alias="hub.mode")],
     verify_token: Annotated[str, Query(..., alias="hub.verify_token")],
