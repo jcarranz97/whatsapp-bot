@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 """Main module for the FastAPI application."""
 
 from fastapi import FastAPI
