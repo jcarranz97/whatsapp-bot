@@ -3,12 +3,14 @@
 
 import logging
 import os
+from typing import Annotated
 
 import requests
 from dotenv import load_dotenv
 from fastapi import (
     FastAPI,
     HTTPException,
+    Query,
 )
 from pydantic import BaseModel
 
@@ -131,9 +133,9 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
 
 @app.get("/webhook")
 async def verify_webhook(
-    hub_mode: str,
-    hub_verify_token: str,
-    hub_challenge: str,
+    mode: Annotated[str, Query(..., alias="hub.mode")],
+    verify_token: Annotated[str, Query(..., alias="hub.verify_token")],
+    challenge: Annotated[str, Query(..., alias="hub.challenge")],
 ) -> str:
     """Verify that the webhook is working.
 
@@ -145,7 +147,7 @@ async def verify_webhook(
 
     """
     # Validate the webhook
-    if hub_mode == "subscribe" and hub_verify_token == WEBHOOK_VERIFY_TOKEN:
+    if mode == "subscribe" and verify_token == WEBHOOK_VERIFY_TOKEN:
         logger.info("Webhook verified successfully!")
-        return hub_challenge
+        return challenge
     raise HTTPException(status_code=403, detail="Forbidden")
