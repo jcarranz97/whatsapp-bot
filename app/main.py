@@ -95,7 +95,9 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
         message_id = message.get("id")
 
         # Send a reply message
-        reply_url = f"https://graph.facebook.com/v18.0/{business_phone_number_id}/messages"
+        reply_url = (
+            f"https://graph.facebook.com/v18.0/{business_phone_number_id}/messages"
+        )
         headers = {"Authorization": f"Bearer {GRAPH_API_TOKEN}"}
         reply_payload = {
             "messaging_product": "whatsapp",
@@ -129,9 +131,9 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
 
 @app.get("/webhook")
 async def verify_webhook(
-        hub_mode: str,
-        hub_verify_token: str,
-        hub_challenge: str,
+    hub_mode: str,
+    hub_verify_token: str,
+    hub_challenge: str,
 ) -> str:
     """Verify that the webhook is working.
 
