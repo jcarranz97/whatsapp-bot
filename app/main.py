@@ -12,6 +12,7 @@ from fastapi import (
     HTTPException,
     Query,
 )
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 
 # Load the environment variables
@@ -131,13 +132,19 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
     return {"status": "success"}
 
 
-@app.get("/webhook")
+@app.get("/webhook", response_class=PlainTextResponse)
 async def verify_webhook(
     mode: Annotated[str, Query(..., alias="hub.mode")],
     verify_token: Annotated[str, Query(..., alias="hub.verify_token")],
     challenge: Annotated[str, Query(..., alias="hub.challenge")],
 ) -> str:
     """Verify that the webhook is working.
+
+    The webhook must be verified by the Facebook Messenger Platform, this
+    function will return the challenge string if the verification is successful.
+
+    For more information, see:
+      - https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests
 
     Raises:
         HTTPException: If the webhook is not verified.
