@@ -74,6 +74,18 @@ class WebhookPayload(BaseModel):
     entry: list
 
 
+def _get_reply_message(message: str) -> str:
+    """Get a nice reply message.
+
+    Returns:
+        str: The reply message.
+
+    """
+    if message.lower() == "quien es oriana?":
+        return "Oriana es una persona muy especial. Es el amor de mi vida."
+    return f"Echo Juan: {message}"
+
+
 @app.post("/webhook")
 async def handle_webhook(payload: WebhookPayload) -> dict:
     """Handle incoming webhook messages.
@@ -96,6 +108,7 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
         user_message = message.get("text", {}).get("body", "")
         sender_id = message.get("from")
         message_id = message.get("id")
+        reply_message = _get_reply_message(user_message)
 
         # Send a reply message
         reply_url = (
@@ -105,7 +118,7 @@ async def handle_webhook(payload: WebhookPayload) -> dict:
         reply_payload = {
             "messaging_product": "whatsapp",
             "to": sender_id,
-            "text": {"body": f"Echo Juan: {user_message}"},
+            "text": {"body": reply_message},
             "context": {"message_id": message_id},
         }
         response = requests.post(
