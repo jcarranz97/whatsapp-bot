@@ -43,6 +43,10 @@ This template uses [FastAPI](https://fastapi.tiangolo.com), a modern, fast (high
 
 This template uses [ruff](https://docs.astral.sh/ruff/), An extremely fast Python linter and code formatter, written in Rust.
 
+## GitHub Actions
+
+This template uses [GitHub Actions](https://docs.github.com/en/actions/about-github-actions/understanding-github-actions), a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline.
+
 ## Thanks
 
 Thanks to [Render](https://render.com) for providing the example [Deploy a FastAPI App](https://render.com/docs/deploy-fastapi) which was used as a reference to deploy this template.
