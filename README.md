@@ -31,17 +31,17 @@ This repository implements the [WhatsApp Platform Quick Start](https://glitch.co
 
 ## Technologies Used
 
-### [`uv`](https://astral.sh/blog/uv) as a Python Package Manager
+### [uv](https://astral.sh/blog/uv)
 
-This template uses [`uv`](https://astral.sh/blog/uv), An extremely fast Python package and project manager, written in Rust.
+This template uses [uv](https://astral.sh/blog/uv), An extremely fast Python package and project manager, written in Rust.
 
-## [`FastAPI`](https://fastapi.tiangolo.com)
+## [FastAPI](https://fastapi.tiangolo.com)
 
 This template uses [FastAPI](https://fastapi.tiangolo.com), a modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints.
 
-## [`ruff`](https://docs.astral.sh/ruff/)
+## [ruff](https://docs.astral.sh/ruff/)
 
-This template uses [`ruff`](https://docs.astral.sh/ruff/), An extremely fast Python linter and code formatter, written in Rust.
+This template uses [ruff](https://docs.astral.sh/ruff/), An extremely fast Python linter and code formatter, written in Rust.
 
 ## Thanks
 
